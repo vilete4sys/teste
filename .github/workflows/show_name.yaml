@@ -1,5 +1,11 @@
 name: name_workflow
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      nome:
+        required: true
+        default: indigente
+        type: string
 
 jobs:
   teste:
@@ -10,4 +16,4 @@ jobs:
       - name: usar action
         uses: ./.github/actions/echo/
         with:
-          nome: Joaquim
+          nome: ${{inputs.nome}}
