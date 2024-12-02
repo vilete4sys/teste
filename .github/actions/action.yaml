@@ -15,8 +15,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: pegar o codigo
-      uses: actions/checkout@v4
     - name: echo
       if: ${{ nome != 'indigente' }}
       shell: bash
