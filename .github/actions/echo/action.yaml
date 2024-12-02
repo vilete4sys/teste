@@ -18,7 +18,7 @@ runs:
     - name: echo
       if: ${{ nome != 'indigente' }}
       shell: bash
-      run: echo ${{ nome }}
+      run: echo ${{ inputs.nome }}
     # - name: NAME_STEP
     #   if: EXPRESSAO
     #   var:
