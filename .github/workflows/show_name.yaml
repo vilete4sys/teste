@@ -9,3 +9,5 @@ jobs:
         uses: actions/checkout@v4
       - name: usar action
         uses: ./.github/actions/echo/
+        with:
+          nome: Joaquim
