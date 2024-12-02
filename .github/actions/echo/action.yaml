@@ -16,7 +16,7 @@ runs:
   using: composite
   steps:
     - name: echo
-      if: ${{ nome != 'indigente' }}
+      if: ${{ inputs.nome != 'indigente' }}
       shell: bash
       run: echo ${{ inputs.nome }}
     # - name: NAME_STEP
