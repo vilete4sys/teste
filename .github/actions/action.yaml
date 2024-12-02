@@ -1,0 +1,33 @@
+name: action_teste
+
+inputs:
+  nome:
+    id: nome
+    description: nome
+    required: true
+    default: indigente
+
+# outputs:
+#   NOME_OUTPUT:
+#     description: A
+#     value: A
+
+runs:
+  using: composite
+  steps:
+    - name: pegar o codigo
+      uses: actions/checkout@v4
+    - name: echo
+      if: ${{ nome != 'indigente' }}
+      shell: bash
+      run: echo ${{ nome }}
+    # - name: NAME_STEP
+    #   if: EXPRESSAO
+    #   var:
+    #     VAR1: VALUE1
+    #   working-directory: A
+    #   run: COMANDO OU PATH_EXECUTAVEL
+    #   shell: bash
+    #   uses: PODE_USAR_OUTRA_ACTION
+    #   with:
+    #     ...

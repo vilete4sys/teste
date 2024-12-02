@@ -1,0 +1,6 @@
+name: name_workflow
+on: workflow_dispatch
+
+steps:
+  - name: usar action
+    uses: .github/actions/action.yaml
