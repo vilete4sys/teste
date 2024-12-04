@@ -1,10 +1,14 @@
-name: name_workflow
+name: workflow
 on:
   workflow_dispatch:
     inputs:
       nome:
         required: true
         default: indigente
+        type: string
+      numero_string:
+        default: 77
+        required: false
         type: string
 
 jobs:
@@ -17,3 +21,7 @@ jobs:
         uses: ./.github/actions/echo/
         with:
           nome: ${{inputs.nome}}
+      - name: teste
+        run: |
+          echo "numero_string="${{inputs.numero_string}} \
+            "ele também é multiline"
