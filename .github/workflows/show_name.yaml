@@ -45,7 +45,7 @@ jobs:
       - name: mascarar senha
         run: |
           PASSWORD=$(jq -r '.inputs.nome' $GITHUB_EVENT_PATH)
-          echo PASSWORD=$PASSWORD >> $GITHUB_ENV
+          echo "PASSWORD=$PASSWORD" >> $GITHUB_ENV
           echo ${{env.PASSWORD}}
 
           if [[ ${{env.PASSWORD}} == "gabriel" ]]; then
