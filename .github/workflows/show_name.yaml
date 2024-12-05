@@ -35,7 +35,7 @@ jobs:
             echo $NOME_VAR
             echo 'foi no if'
 
-          elif [ "${{inputs.nome}}" == "pedro" ] && [ ${{inputs.choice}} == "doi"* ] ; then
+          elif [[ ${{inputs.nome}} == "pedro" ]] && [[ ${{inputs.choice}} == "doi"* ]] ; then
             export NOME_VAR=${{env.testando}}
             echo $NOME_VAR
             echo 'foi no elif'
