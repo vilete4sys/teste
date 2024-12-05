@@ -30,7 +30,7 @@ jobs:
           echo ${{inputs.teste}}
       - name: teste_if
         run: |
-          if ${{inputs.nome == "gabriel"}}; then
+          if ${{inputs.nome}} == "gabriel"}}; then
             export NOME_VAR=${{env.testando}}
             echo $NOME_VAR
 
