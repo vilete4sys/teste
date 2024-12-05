@@ -22,7 +22,7 @@ jobs:
       - name: pegar o codigo
         uses: actions/checkout@v4
       - name: usar action
-        if: ${{inputs.nome == "gabriel"}}
+        if: ${{ ${{inputs.nome}} == "gabriel" }}
         uses: ./.github/actions/echo/
         with:
           nome: ${{inputs.nome}}
