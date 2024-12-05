@@ -6,13 +6,17 @@ on:
         required: true
         default: indigente
         type: string
-      numero_string:
-        default: 77
+      teste:
         required: false
-        type: string
+        type: choice
+        options:
+          - um
+          - dois
 
 jobs:
   teste:
+    env:
+      testando: funciona
     runs-on: ubuntu-latest
     steps:
       - name: pegar o codigo
@@ -21,7 +25,19 @@ jobs:
         uses: ./.github/actions/echo/
         with:
           nome: ${{inputs.nome}}
-      - name: teste
+      - name: teste_choice
         run: |
-          echo "numero_string="${{inputs.numero_string}} \
-            "ele também é multiline"
+          echo ${{inputs.teste}}
+      - name: teste_if
+        run: |
+          if ${{inputs.nome == "gabriel"}}; then
+            export NOME_VAR=${{env.testando}}
+            echo $NOME_VAR
+
+          elif [ ${{inputs.nome == "pedro"}} ] && [ ${{inputs.choice}} == "doi"* ] ; then
+            export NOME_VAR=${{env.testando}}
+            echo $NOME_VAR
+
+          else
+            echo "Caiu no else"
+          fi
