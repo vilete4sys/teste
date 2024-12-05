@@ -19,26 +19,31 @@ jobs:
       testando: funciona
     runs-on: ubuntu-latest
     steps:
-      - name: pegar o codigo
-        uses: actions/checkout@v4
-      - name: usar action
-        if: "${{ github.event.inputs.nome == 'gabriel' }}"
-        uses: ./.github/actions/echo/
-        with:
-          nome: ${{inputs.nome}}
-      - name: teste_choice
+      # - name: pegar o codigo
+      #   uses: actions/checkout@v4
+      # - name: usar action
+      #   if: "${{ github.event.inputs.nome == 'gabriel' }}"
+      #   uses: ./.github/actions/echo/
+      #   with:
+      #     nome: ${{inputs.nome}}
+      # - name: teste_choice
+      #   run: |
+      #     echo ${{inputs.teste}}
+      # - name: teste_if
+      #   run: |
+      #     if [[ ${{inputs.nome}} == "gabriel" ]]; then
+      #       export NOME_VAR=${{env.testando}}
+      #       echo $NOME_VAR
+      #       echo 'foi no if'
+      #     elif [[ ${{inputs.nome}} == "pedro" ]] && [[ ${{inputs.teste}} == "doi"* ]]; then
+      #       export NOME_VAR=${{env.testando}}
+      #       echo $NOME_VAR
+      #       echo 'foi no elif'
+      #     else
+      #       echo "Caiu no else"
+      #     fi
+      - name: mascarar senha
         run: |
-          echo ${{inputs.teste}}
-      - name: teste_if
-        run: |
-          if [[ ${{inputs.nome}} == "gabriel" ]]; then
-            export NOME_VAR=${{env.testando}}
-            echo $NOME_VAR
-            echo 'foi no if'
-          elif [[ ${{inputs.nome}} == "pedro" ]] && [[ ${{inputs.teste}} == "doi"* ]]; then
-            export NOME_VAR=${{env.testando}}
-            echo $NOME_VAR
-            echo 'foi no elif'
-          else
-            echo "Caiu no else"
-          fi
+          PASSWORD=$(jq -r '.inputs.nome' $GITHUB_EVENT_PATH)
+          echo PASSWORD=$PASSWORD >> $GITHUB_ENV
+          echo ${{env.PASSWORD}}
