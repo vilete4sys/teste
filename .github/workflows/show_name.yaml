@@ -45,15 +45,15 @@ jobs:
       - name: teste mudar input
         run: |
           if [[ ${{inputs.nome}} =~ "gabriel" ]]; then
-              ${{inputs.nome}}="teste"
-              export vamosver=teste
+              echo nome=novo_nome >> $GITHUB_ENV
               echo 'caiu no if!'
-              echo $vamosver
           fi
       - name: print nome
         run: |
           echo ${{inputs.nome}}
-          echo $vamosver
+          echo events.input=${{github.events.input.nome}}
+          echo env=${{env.nome}}
+          echo inputs=${{inputs.nome}}
       - name: mascarar senha
         run: |
           PASSWORD=$(jq -r '.inputs.nome' $GITHUB_EVENT_PATH)
