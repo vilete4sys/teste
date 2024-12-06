@@ -44,7 +44,7 @@ jobs:
       #     fi
       - name: teste mudar input
         run: |
-          if [[ ${{inputs.nome}} =~ "gabriel" ]]; then
+          if [[ ${{inputs.nome}} =~ "gabriel" ]] && [[ ${{inputs.choice}} == "dois" ]]; then
               echo nome=novo_nome >> $GITHUB_ENV
               echo 'caiu no if!'
           fi
