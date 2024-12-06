@@ -46,11 +46,13 @@ jobs:
         run: |
           if [[ ${{inputs.nome}} =~ "gabriel" ]]; then
               ${{inputs.nome}}="teste"
+              export testando=teste
               echo 'caiu no if!'
           fi
       - name: print nome
         run: |
           echo ${{inputs.nome}}
+          echo $testando
       - name: mascarar senha
         run: |
           PASSWORD=$(jq -r '.inputs.nome' $GITHUB_EVENT_PATH)
