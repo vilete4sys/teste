@@ -42,26 +42,32 @@ jobs:
       #     else
       #       echo "Caiu no else"
       #     fi
-      - name: teste mudar input
+      # - name: teste mudar input
+      #   run: |
+      #     if [[ ${{inputs.nome}} =~ "gabriel" ]] && [[ ${{inputs.teste}} == "dois" ]]; then
+      #         echo nome=novo_nome >> $GITHUB_ENV
+      #         echo 'caiu no if!'
+      #     fi
+      # - name: print nome
+      #   run: |
+      #     echo ${{inputs.nome}}
+      #     echo events.input=${{github.events.input.nome}}
+      #     echo env=${{env.nome}}
+      #     echo inputs=${{inputs.nome}}
+      # - name: mascarar senha
+      #   run: |
+      #     PASSWORD=$(jq -r '.inputs.nome' $GITHUB_EVENT_PATH)
+      #     echo ::add-mask::$PASSWORD
+      #     echo "PASSWORD=$PASSWORD" >> $GITHUB_ENV
+      # - name: verificar
+      #   run: |
+      #     echo ${{ env.PASSWORD }}
+      #     if [[ ${{env.PASSWORD}} == 'gabriel' ]]; then
+      #       echo 'sim'
+      #     fi
+      - name: test file
         run: |
-          if [[ ${{inputs.nome}} =~ "gabriel" ]] && [[ ${{inputs.teste}} == "dois" ]]; then
-              echo nome=novo_nome >> $GITHUB_ENV
-              echo 'caiu no if!'
-          fi
-      - name: print nome
+          echo 'dentro do arquivo' > arquivo.txt
+      - name: cat arquivo
         run: |
-          echo ${{inputs.nome}}
-          echo events.input=${{github.events.input.nome}}
-          echo env=${{env.nome}}
-          echo inputs=${{inputs.nome}}
-      - name: mascarar senha
-        run: |
-          PASSWORD=$(jq -r '.inputs.nome' $GITHUB_EVENT_PATH)
-          echo ::add-mask::$PASSWORD
-          echo "PASSWORD=$PASSWORD" >> $GITHUB_ENV
-      - name: verificar
-        run: |
-          echo ${{ env.PASSWORD }}
-          if [[ ${{env.PASSWORD}} == 'gabriel' ]]; then
-            echo 'sim'
-          fi
+          cat arquivo.txt
