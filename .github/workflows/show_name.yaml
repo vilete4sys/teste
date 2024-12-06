@@ -46,6 +46,7 @@ jobs:
         run: |
           if [[ ${{inputs.nome}} =~ "gabriel" ]]; then
               ${{inputs.nome}}="teste"
+              echo 'caiu no if!'
           fi
       - name: print nome
         run: |
