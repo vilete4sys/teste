@@ -42,6 +42,14 @@ jobs:
       #     else
       #       echo "Caiu no else"
       #     fi
+      - name: teste mudar input
+        run: |
+          if [[ ${{inputs.nome}} =~ "gabriel" ]]; then
+              ${{inputs.nome}}="teste"
+          fi
+        - name: print nome
+        run: |
+          echo ${{inputs.nome}}
       - name: mascarar senha
         run: |
           PASSWORD=$(jq -r '.inputs.nome' $GITHUB_EVENT_PATH)
