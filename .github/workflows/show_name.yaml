@@ -47,7 +47,7 @@ jobs:
           if [[ ${{inputs.nome}} =~ "gabriel" ]]; then
               ${{inputs.nome}}="teste"
           fi
-        - name: print nome
+      - name: print nome
         run: |
           echo ${{inputs.nome}}
       - name: mascarar senha
