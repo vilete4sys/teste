@@ -48,6 +48,7 @@ jobs:
               ${{inputs.nome}}="teste"
               export vamosver=teste
               echo 'caiu no if!'
+              echo $vamosver
           fi
       - name: print nome
         run: |
