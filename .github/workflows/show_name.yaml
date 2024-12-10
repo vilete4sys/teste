@@ -68,6 +68,8 @@ jobs:
       - name: test file
         run: |
           echo 'dentro do arquivo' > arquivo.txt
+          OUTPUT=$?
+          echo $OUTPUT
       - name: cat arquivo
         run: |
           cat arquivo.txt
