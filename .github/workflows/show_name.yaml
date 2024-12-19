@@ -21,11 +21,13 @@ jobs:
     steps:
       # - name: pegar o codigo
       #   uses: actions/checkout@v4
-      # - name: usar action
-      #   if: "${{ github.event.inputs.nome == 'gabriel' }}"
-      #   uses: ./.github/actions/echo/
-      #   with:
-      #     nome: ${{inputs.nome}}
+      - name: usar action
+        if: "${{ github.event.inputs.nome == 'gabriel' }}"
+        uses: ./.github/actions/echo/
+        with:
+          nome: ${{inputs.nome}}
+      - name: teste var
+        run: echo ${{ env.VARIAVEL_EXTERNA }}
       # - name: teste_choice
       #   run: |
       #     echo ${{inputs.teste}}
@@ -65,11 +67,11 @@ jobs:
       #     if [[ ${{env.PASSWORD}} == 'gabriel' ]]; then
       #       echo 'sim'
       #     fi
-      - name: test file
-        run: |
-          echo 'dentro do arquivo' > arquivo.txt
-          OUTPUT=$?
-          echo $OUTPUT
-      - name: cat arquivo
-        run: |
-          cat arquivo.txt
+      # - name: test file
+      #   run: |
+      #     echo 'dentro do arquivo' > arquivo.txt
+      #     OUTPUT=$?
+      #     echo $OUTPUT
+      # - name: cat arquivo
+      #   run: |
+      #     cat arquivo.txt

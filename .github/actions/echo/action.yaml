@@ -18,7 +18,9 @@ runs:
     - name: echo
       if: ${{ inputs.nome != 'indigente' }}
       shell: bash
-      run: echo ${{ inputs.nome }}
+      run: |
+        echo ${{ inputs.nome }}
+        echo VARIAVEL_EXTERNA=${{ inputs.nome }} >> $GITHUB_ENV
     # - name: NAME_STEP
     #   if: EXPRESSAO
     #   var:
