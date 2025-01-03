@@ -26,10 +26,10 @@ jobs:
           nome: ${{inputs.nome}}
       - name: validação
         env:
-          nomes: ['João', 'Pedro', 'Joaquim']
+          nomes: "['João' 'Pedro' 'Joaquim']"
         run: |
           echo ${{ toJSON(env.nomes) }}
 
-          for item in ${{ toJSON(env.nomes) }}; do
+          for item in  "${teste[@]}"; do
             echo $item
           done
