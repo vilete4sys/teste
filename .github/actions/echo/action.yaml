@@ -7,11 +7,6 @@ inputs:
     required: true
     default: indigente
 
-# outputs:
-#   NOME_OUTPUT:
-#     description: A
-#     value: A
-
 runs:
   using: composite
   steps:
@@ -21,13 +16,3 @@ runs:
       run: |
         echo ${{ inputs.nome }}
         echo VARIAVEL_EXTERNA=${{ inputs.nome }} >> $GITHUB_ENV
-    # - name: NAME_STEP
-    #   if: EXPRESSAO
-    #   var:
-    #     VAR1: VALUE1
-    #   working-directory: A
-    #   run: COMANDO OU PATH_EXECUTAVEL
-    #   shell: bash
-    #   uses: PODE_USAR_OUTRA_ACTION
-    #   with:
-    #     ...

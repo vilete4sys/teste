@@ -15,8 +15,6 @@ on:
 
 jobs:
   teste:
-    env:
-      testando: funciona
     runs-on: ubuntu-latest
     steps:
       - name: pegar o codigo
@@ -26,52 +24,11 @@ jobs:
         uses: ./.github/actions/echo/
         with:
           nome: ${{inputs.nome}}
-      - name: teste var
-        run: echo ${{ env.VARIAVEL_EXTERNA }}
-      # - name: teste_choice
-      #   run: |
-      #     echo ${{inputs.teste}}
-      # - name: teste_if
-      #   run: |
-      #     if [[ ${{inputs.nome}} == "gabriel" ]]; then
-      #       export NOME_VAR=${{env.testando}}
-      #       echo $NOME_VAR
-      #       echo 'foi no if'
-      #     elif [[ ${{inputs.nome}} == "pedro" ]] && [[ ${{inputs.teste}} == "doi"* ]]; then
-      #       export NOME_VAR=${{env.testando}}
-      #       echo $NOME_VAR
-      #       echo 'foi no elif'
-      #     else
-      #       echo "Caiu no else"
-      #     fi
-      # - name: teste mudar input
-      #   run: |
-      #     if [[ ${{inputs.nome}} =~ "gabriel" ]] && [[ ${{inputs.teste}} == "dois" ]]; then
-      #         echo nome=novo_nome >> $GITHUB_ENV
-      #         echo 'caiu no if!'
-      #     fi
-      # - name: print nome
-      #   run: |
-      #     echo ${{inputs.nome}}
-      #     echo events.input=${{github.events.input.nome}}
-      #     echo env=${{env.nome}}
-      #     echo inputs=${{inputs.nome}}
-      # - name: mascarar senha
-      #   run: |
-      #     PASSWORD=$(jq -r '.inputs.nome' $GITHUB_EVENT_PATH)
-      #     echo ::add-mask::$PASSWORD
-      #     echo "PASSWORD=$PASSWORD" >> $GITHUB_ENV
-      # - name: verificar
-      #   run: |
-      #     echo ${{ env.PASSWORD }}
-      #     if [[ ${{env.PASSWORD}} == 'gabriel' ]]; then
-      #       echo 'sim'
-      #     fi
-      # - name: test file
-      #   run: |
-      #     echo 'dentro do arquivo' > arquivo.txt
-      #     OUTPUT=$?
-      #     echo $OUTPUT
-      # - name: cat arquivo
-      #   run: |
-      #     cat arquivo.txt
+      - name: validação
+        env:
+          nomes:
+            - João
+            - Pedro
+            - Joaquim
+        run: |
+          echo ${{ env.nomes }}
