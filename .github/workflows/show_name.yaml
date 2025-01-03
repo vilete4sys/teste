@@ -28,4 +28,4 @@ jobs:
         env:
           nomes: "['João', 'Pedro', 'Joaquim']"
         run: |
-          echo ${{ fromJSON(env.nomes) }}
+          echo ${{ toJSON(env.nomes) }}
