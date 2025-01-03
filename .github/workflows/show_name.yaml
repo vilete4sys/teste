@@ -31,4 +31,7 @@ jobs:
             Pedro
             Joaquim
         run: |
+          for item in ${{ env.nomes }}; do
+            echo $item
+          done
           echo ${{ env.nomes }}
