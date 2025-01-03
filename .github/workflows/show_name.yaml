@@ -28,8 +28,6 @@ jobs:
         env:
           nomes: "['João' 'Pedro' 'Joaquim']"
         run: |
-          echo ${{ toJSON(env.nomes) }}
-
-          for item in  "${teste[@]}"; do
+          echo ${{ env.nomes }} | jq -c '.[]' | while read item; do
             echo $item
           done
